@@ -10,6 +10,12 @@ class Tree
     @root = build_tree
   end
 
+  def find(value, root = @root)
+    return root if root.nil? || value == root.data
+
+    find(value, root.data < value ? root.right : root.left)
+  end
+
   private
 
   def build_tree(first = 0, last = @arr.length - 1)
